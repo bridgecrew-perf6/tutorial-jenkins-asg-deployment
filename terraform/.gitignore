@@ -1,0 +1,9 @@
+# Ingore the terraform state seeing as this is a public repository for others
+# to copy and they don't want our state.
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+
+# ignore the users input values
+terraform.tfvars

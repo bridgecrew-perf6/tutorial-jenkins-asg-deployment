@@ -54,7 +54,7 @@ pipeline {
                             def ASG_NAME = branchConfig.ASG_NAME
                             def IAM_ASG_CREDENTIALS_NAME = branchConfig.IAM_ASG_CREDENTIALS_NAME
 
-                            withCredentials([usernamePassword(credentialsId: IAM_ASG_CREDENTIALS_NAME, passwordVariable: 'AWS_PASSWORD', usernameVariable: 'AWS_USERNAME')]) {
+                            withCredentials([usernamePassword(credentialsId: IAM_ASG_CREDENTIALS_NAME, passwordVariable: 'AWS_KEY_SECRET', usernameVariable: 'AWS_KEY_ID')]) {
                                 // install the AWS CLI
                                 sh "apt-get update && apt-get install python3-pip -y && pip3 install awscli"
 
