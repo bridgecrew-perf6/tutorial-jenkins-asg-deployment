@@ -1,8 +1,9 @@
 Tutorial - Jenkins Auto Scaling Group Deployment Website
 =======================================================
 
-This is the codebase is the example code for a tutorial on how to get Jenkins to automatically re-deploy your website
-when it is deployed through the use of an  autoscaling group (as demonstrated
+This is the codebase is the example code for [a tutorial on how to get Jenkins to automatically re-deploy your website
+when it is deployed through the use of an  autoscaling 
+group](https://blog.programster.org/jenkins-pipeline-deploy-to-auto-scaling-group) (as demonstrated
 [here](https://github.com/programster/tutorial-terraform-examples)).
 
 
