@@ -52,20 +52,17 @@ pipeline {
                         if (branchConfig) {
                             echo "using config for branch ${env.BRANCH_NAME}"
                             def ASG_NAME = branchConfig.ASG_NAME
+                            def AWS_REGION = branchConfig.AWS_REGION
                             def IAM_CREDENTIALS_NAME = branchConfig.IAM_ASG_CREDENTIALS_NAME
-                            echo "credentials name: " + branchConfig.IAM_ASG_CREDENTIALS_NAME
-                            echo "credentials name2: " + IAM_CREDENTIALS_NAME
 
                             withCredentials([usernamePassword(credentialsId: IAM_CREDENTIALS_NAME, passwordVariable: 'AWS_KEY_SECRET', usernameVariable: 'AWS_KEY_ID')]) {
                                 // install the AWS CLI
                                 sh "apt-get update && apt-get install python3-pip -y && pip3 install awscli"
-                                sh 'echo credentials ID: ' + IAM_CREDENTIALS_NAME
-                                sh 'echo Username: ' + AWS_KEY_ID
-                                sh 'echo Password: ' + AWS_KEY_SECRET
 
                                 // set the aws credentials
                                 sh 'aws configure set aws_access_key_id ' + AWS_KEY_ID
                                 sh 'aws configure set aws_secret_access_key ' + AWS_KEY_SECRET
+                                sh 'aws configure set region ' + AWS_REGION
 
                                 // use the AWS CLI to send the request to rotate the servers,
                                 // which will cause them to pull the latest Docker image.
