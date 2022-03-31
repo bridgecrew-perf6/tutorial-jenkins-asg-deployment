@@ -1,0 +1,15 @@
+# Specify the AWS region deploying to.
+# London = "eu-west-2"
+aws_region = "eu-west-2"
+
+web_port = 80
+
+ssh_public_key = "ssh-rsa AAAA"
+
+# Specify the full name for the docker image. This should include the
+# registry if using a private registry, or your username if using an
+# image from the Docker Hub.
+docker_image="myUsername/jenkins-asg-demo-site"
+
+# Specify the name for the auto scaling group.
+asg_name="myAutoScalingGroup"
