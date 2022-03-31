@@ -2,7 +2,7 @@ Tutorial - Jenkins Auto Scaling Group Deployment Website
 =======================================================
 
 This is the codebase is the example code for [a tutorial on how to get Jenkins to automatically re-deploy your website
-when it is deployed through the use of an  autoscaling 
+when it is deployed through the use of an  autoscaling
 group](https://blog.programster.org/jenkins-pipeline-deploy-to-auto-scaling-group) (as demonstrated
 [here](https://github.com/programster/tutorial-terraform-examples)).
 
@@ -72,12 +72,12 @@ The `ASG_NAME` should match the `asg_name` output variable from the Terraform ou
 
 ```json
 {
-    staging: {
-        DOCKER_REGISTRY: "",
-        IMAGE_NAME: "jenkins-asg-demo-site",
-        ASG_NAME: "staging-demo-asg",
-        AWS_REGION: "eu-west-2",
-        IAM_ASG_CREDENTIALS_NAME: "aws-staging-asg-credentials"
+    "staging": {
+        "DOCKER_REGISTRY": "",
+        "IMAGE_NAME": "jenkins-asg-demo-site",
+        "ASG_NAME": "staging-demo-asg",
+        "AWS_REGION": "eu-west-2",
+        "IAM_ASG_CREDENTIALS_NAME": "aws-staging-asg-credentials"
     }
 }
 ```
