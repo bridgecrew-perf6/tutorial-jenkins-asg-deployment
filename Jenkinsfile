@@ -38,7 +38,7 @@ pipeline {
 
         stage("deploy") {
             agent {
-                docker { image 'ubuntu:focal' }
+                docker { image 'ubuntu:20.04' }
             }
             steps {
                 configFileProvider([configFile(fileId: 'myBranchSettingsFile', variable: 'BRANCH_SETTINGS')]) {
@@ -56,7 +56,7 @@ pipeline {
 
                             withCredentials([usernamePassword(credentialsId: IAM_ASG_CREDENTIALS_NAME, passwordVariable: 'AWS_PASSWORD', usernameVariable: 'AWS_USERNAME')]) {
                                 // install the AWS CLI
-                                sh "apt-get install python3-pip -y && pip3 install awscli"
+                                sh "apt-get update && apt-get install python3-pip -y && pip3 install awscli"
 
                                 // set the aws credentials
                                 sh 'aws configure set aws_access_key_id ' + AWS_KEY_ID
