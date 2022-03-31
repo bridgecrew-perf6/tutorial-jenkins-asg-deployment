@@ -1,2 +1,4 @@
-# tutorial-jenkins-asg-deployment
-The codebase for a website with a Jenkinsfile that will trigger the update of the website by refreshing the auto-scaling group.
+Tutorial - Jenkins Autoscaling Group Deployment Website
+=======================================================
+
+This is the codebase for a website and a Jenkinsfile that will trigger the update of the website by refreshing the auto-scaling group.
