@@ -23,7 +23,7 @@ pipeline {
                             def DOCKER_REGISTRY = branchConfig.DOCKER_REGISTRY
                             def dockerImage = docker.build(branchConfig.IMAGE_NAME)
 
-                            docker.withRegistry("https://${branchConfig.DOCKER_REGISTRY}", 'docker-registry-credentials') {
+                            docker.withRegistry("${branchConfig.DOCKER_REGISTRY}", 'docker-registry-credentials') {
                                 dockerImage.push("${env.BUILD_NUMBER}")
                                 dockerImage.push("latest")
                             }
@@ -52,9 +52,9 @@ pipeline {
                         if (branchConfig) {
                             echo "using config for branch ${env.BRANCH_NAME}"
                             def ASG_NAME = branchConfig.ASG_NAME
-                            def ASG_CREDENTIALS_NAME = branchConfig.ASG_IAM_CREDENTIALS_NAME
+                            def IAM_ASG_CREDENTIALS_NAME = branchConfig.IAM_ASG_CREDENTIALS_NAME
 
-                            withCredentials([usernamePassword(credentialsId: ASG_CREDENTIALS_NAME, passwordVariable: 'AWS_PASSWORD', usernameVariable: 'AWS_USERNAME')]) {
+                            withCredentials([usernamePassword(credentialsId: IAM_ASG_CREDENTIALS_NAME, passwordVariable: 'AWS_PASSWORD', usernameVariable: 'AWS_USERNAME')]) {
                                 // install the AWS CLI
                                 sh "apt-get install python3-pip -y && pip3 install awscli"
 
