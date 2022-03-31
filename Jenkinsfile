@@ -57,6 +57,9 @@ pipeline {
                             withCredentials([usernamePassword(credentialsId: IAM_ASG_CREDENTIALS_NAME, passwordVariable: 'AWS_KEY_SECRET', usernameVariable: 'AWS_KEY_ID')]) {
                                 // install the AWS CLI
                                 sh "apt-get update && apt-get install python3-pip -y && pip3 install awscli"
+                                sh 'echo credentials ID: $IAM_ASG_CREDENTIALS_NAME'
+                                sh 'echo Username: $AWS_KEY_ID'
+                                sh 'echo Password: $AWS_KEY_SECRET'
 
                                 // set the aws credentials
                                 sh 'aws configure set aws_access_key_id ' + AWS_KEY_ID
